@@ -39,7 +39,7 @@ def check_ip_port(ip_port, url_end):
         resp.raise_for_status()
         if "Multi stream daemon" in resp.text or "udpxy status" in resp.text:
             print(f"{url} 访问成功")
-            return f"{url}\n"
+            return url
     except:
         return None
 # 多线程检测url，获取有效urls
@@ -73,9 +73,11 @@ def multicast_province(config_file):
             print(f"\n开始扫描 ip：{ip}，port：{port}，url_end：{url_end} ")
             valid_urls.extend(scan_ip_port(ip, port, option, url_end))
     valid_urls = sorted(set(valid_urls))
-    print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(valid_urls)}个\n{valid_urls}")
+    print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(valid_urls)}个")
+    for url in valid_urls:
+        print(url)
     with open(f"ip/{province}{operator}_ip.txt", 'a', encoding='utf-8') as f:
-        f.writelines(valid_urls)   #有效url写入文件
+        f.write('\n'.join(valid_urls) + '\n')   #有效url写入文件
 
 print("\n开始获取组播源")
 for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
