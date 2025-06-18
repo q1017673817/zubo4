@@ -29,3 +29,11 @@ jobs:
           cd $GITHUB_WORKSPACE
           python ./zubo_test.py
                     
+      - name: 更新组播源
+        run: |
+          git pull
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "更新组播源"
+          git push
