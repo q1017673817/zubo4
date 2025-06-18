@@ -104,8 +104,12 @@ def multicast_province(config_file):
     else:
         print(f"\n{province} 扫描完成，未扫描到有效ip_port")
 
-config_files = ["ip/河北联通_config.txt"]
-print("\n开始获取组播源")
-for config_file in config_files:
-    multicast_province(config_file)
-print(f"组播源获取完成")
+def main():
+    config_files = ["ip/河北联通_config.txt"]
+    print("\n开始获取组播源")
+    for config_file in config_files:
+        multicast_province(config_file)
+    print(f"组播源获取完成")
+
+if __name__ == "__main__":
+    main()
