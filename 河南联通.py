@@ -105,7 +105,7 @@ def multicast_province(config_file):
         print(f"\n{province} 扫描完成，未扫描到有效ip_port")
 
 def main():
-    config_files = ["ip/福建电信_config.txt"]
+    config_files = ["ip/河南联通_config.txt"]
     print("\n开始获取组播源")
     for config_file in config_files:
         multicast_province(config_file)
